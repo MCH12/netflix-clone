@@ -1,0 +1,18 @@
+%section.sign_in.container
+  .row
+    .span10.offset1
+      = form_tag sessions_path, class: 'sign_in' do
+        %header
+          %h1 Sign in
+        %fieldset
+          = label_tag :email, "Email Address"
+          = email_field_tag :email
+          = label_tag :password
+          = password_field_tag :password
+        %fieldset.action
+          %input(type="submit" value="Sign In" class="btn")
+          = link_to "Forgot Password?", forgot_password_path
+        %br
+        %p.sign_up
+          Need an account? Please
+          = link_to "Sign Up", register_path

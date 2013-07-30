@@ -1,0 +1,130 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4242424242424242&card[exp_month]=6&card[exp_year]=2016&card[cvc]=314
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin11.4.0","publisher":"stripe","uname":"Darwin
+        localhost 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012;
+        root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '81'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 30 Jul 2013 02:59:06 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '548'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"id\": \"tok_2I3S2vtgucde44\",\n  \"livemode\": false,\n  \"created\":
+        1375153145,\n  \"used\": false,\n  \"object\": \"token\",\n  \"type\": \"card\",\n
+        \ \"card\": {\n    \"id\": \"cc_2I3S7B9XyWZG8i\",\n    \"object\": \"card\",\n
+        \   \"last4\": \"4242\",\n    \"type\": \"Visa\",\n    \"exp_month\": 6,\n
+        \   \"exp_year\": 2016,\n    \"fingerprint\": \"vqgUq5EjVPslSdVw\",\n    \"customer\":
+        null,\n    \"country\": \"US\",\n    \"name\": null,\n    \"address_line1\":
+        null,\n    \"address_line2\": null,\n    \"address_city\": null,\n    \"address_state\":
+        null,\n    \"address_zip\": null,\n    \"address_country\": null\n  }\n}\n"
+    http_version: 
+  recorded_at: Tue, 30 Jul 2013 02:59:06 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: card=tok_2I3S2vtgucde44&plan=999_monthly&email=testemail%40example.com&description=Test%20charge
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin11.4.0","publisher":"stripe","uname":"Darwin
+        localhost 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012;
+        root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '96'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 30 Jul 2013 02:59:08 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '1634'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"object\": \"customer\",\n  \"created\": 1375153146,\n  \"id\":
+        \"cus_2I3Sl3aN9t9BLV\",\n  \"livemode\": false,\n  \"description\": \"Test
+        charge\",\n  \"email\": \"testemail@example.com\",\n  \"delinquent\": false,\n
+        \ \"subscription\": {\n    \"plan\": {\n      \"interval\": \"month\",\n      \"name\":
+        \"Myflix $9.99 monthly\",\n      \"amount\": 999,\n      \"currency\": \"usd\",\n
+        \     \"id\": \"999_monthly\",\n      \"object\": \"plan\",\n      \"livemode\":
+        false,\n      \"interval_count\": 1,\n      \"trial_period_days\": null\n
+        \   },\n    \"object\": \"subscription\",\n    \"start\": 1375153146,\n    \"status\":
+        \"active\",\n    \"customer\": \"cus_2I3Sl3aN9t9BLV\",\n    \"cancel_at_period_end\":
+        false,\n    \"current_period_start\": 1375153146,\n    \"current_period_end\":
+        1377831546,\n    \"ended_at\": null,\n    \"trial_start\": null,\n    \"trial_end\":
+        null,\n    \"canceled_at\": null,\n    \"quantity\": 1\n  },\n  \"discount\":
+        null,\n  \"account_balance\": 0,\n  \"cards\": {\n    \"object\": \"list\",\n
+        \   \"count\": 1,\n    \"url\": \"/v1/customers/cus_2I3Sl3aN9t9BLV/cards\",\n
+        \   \"data\": [\n      {\n        \"id\": \"cc_2I3S7B9XyWZG8i\",\n        \"object\":
+        \"card\",\n        \"last4\": \"4242\",\n        \"type\": \"Visa\",\n        \"exp_month\":
+        6,\n        \"exp_year\": 2016,\n        \"fingerprint\": \"vqgUq5EjVPslSdVw\",\n
+        \       \"customer\": \"cus_2I3Sl3aN9t9BLV\",\n        \"country\": \"US\",\n
+        \       \"name\": null,\n        \"address_line1\": null,\n        \"address_line2\":
+        null,\n        \"address_city\": null,\n        \"address_state\": null,\n
+        \       \"address_zip\": null,\n        \"address_country\": null,\n        \"cvc_check\":
+        \"pass\",\n        \"address_line1_check\": null,\n        \"address_zip_check\":
+        null\n      }\n    ]\n  },\n  \"default_card\": \"cc_2I3S7B9XyWZG8i\"\n}\n"
+    http_version: 
+  recorded_at: Tue, 30 Jul 2013 02:59:08 GMT
+recorded_with: VCR 2.5.0

@@ -1,0 +1,38 @@
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+Stripe.setPublishableKey("#{ENV['STRIPE_PUBLISHABLE']}");
+</script>
+= javascript_include_tag 'payment'
+
+%section.register.container
+  .row
+    .span10.offset1
+      = bootstrap_form_for @user, html: { id: "payment-form", class: "form-horizontal" } do |f|
+        %header
+          %h1 Register
+        %fieldset
+          = f.email_field :email, label: "Email Address"
+          = f.password_field :password
+          = f.text_field :full_name, label: "Full Name"
+          = hidden_field_tag :invitation_token, @invitation_token
+        %fieldset.credit_card
+          %span.payment-errors
+          .control-group
+            %label.control-label(for="credit-card-number") Credit Card Number
+            .controls
+              %input.span3(id="credit-card-number" type="text" size="20" data-stripe="number")
+          .control-group
+            %label.control-label(for="security-code") Security Code
+            .controls
+              %input.span3(id="security-code" type="text" size="3" data-stripe="cvc")
+          .control-group
+            %label.control-label Expiration
+            .controls
+              = select_month(Date.today, {add_month_numbers: true},  class: 'span2', data: { stripe: "exp-month" })
+              = select_year(Date.today.year, {start_year: Date.today.year, end_year: Date.today.year + 4}, class: 'span1', data: { stripe: "exp-year"})
+        %fieldset.actions.control-group
+          .controls
+            %input(type="submit" value="Sign Up" class="btn")
+        %p.sign_in
+          Have an account? Please
+          = link_to "Sign In", login_path

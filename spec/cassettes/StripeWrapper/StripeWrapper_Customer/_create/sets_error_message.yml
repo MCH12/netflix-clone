@@ -1,0 +1,109 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4000000000000002&card[exp_month]=6&card[exp_year]=2016&card[cvc]=314
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin11.4.0","publisher":"stripe","uname":"Darwin
+        localhost 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012;
+        root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '81'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 30 Jul 2013 02:59:13 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '548'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"id\": \"tok_2I3SZ57DyLx2Yq\",\n  \"livemode\": false,\n  \"created\":
+        1375153153,\n  \"used\": false,\n  \"object\": \"token\",\n  \"type\": \"card\",\n
+        \ \"card\": {\n    \"id\": \"cc_2I3SXHCtItpBWm\",\n    \"object\": \"card\",\n
+        \   \"last4\": \"0002\",\n    \"type\": \"Visa\",\n    \"exp_month\": 6,\n
+        \   \"exp_year\": 2016,\n    \"fingerprint\": \"yczg7LFe7Q2w3qfV\",\n    \"customer\":
+        null,\n    \"country\": \"US\",\n    \"name\": null,\n    \"address_line1\":
+        null,\n    \"address_line2\": null,\n    \"address_city\": null,\n    \"address_state\":
+        null,\n    \"address_zip\": null,\n    \"address_country\": null\n  }\n}\n"
+    http_version: 
+  recorded_at: Tue, 30 Jul 2013 02:59:13 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/customers
+    body:
+      encoding: US-ASCII
+      string: card=tok_2I3SZ57DyLx2Yq&plan=999_monthly&email=testemail%40example.com&description=Test%20charge
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - ! '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"1.9.3 p194 (2012-04-20)","platform":"x86_64-darwin11.4.0","publisher":"stripe","uname":"Darwin
+        localhost 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25 00:48:52 PDT 2012;
+        root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64"}'
+      Content-Length:
+      - '96'
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Tue, 30 Jul 2013 02:59:15 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '117'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"error\": {\n    \"message\": \"Your card was declined.\",\n
+        \   \"type\": \"card_error\",\n    \"code\": \"card_declined\"\n  }\n}\n"
+    http_version: 
+  recorded_at: Tue, 30 Jul 2013 02:59:15 GMT
+recorded_with: VCR 2.5.0

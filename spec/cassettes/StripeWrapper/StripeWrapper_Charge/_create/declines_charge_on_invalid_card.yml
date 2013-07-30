@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/tokens
+    body:
+      encoding: US-ASCII
+      string: card[number]=4000000000000002&card[exp_month]=6&card[exp_year]=2016&card[cvc]=314
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"2.0.0 p247 (2013-06-27)","platform":"x86_64-linux","publisher":"stripe","uname":"Linux
+        dev 3.8.0-19-generic #30-Ubuntu SMP Wed May 1 16:35:23 UTC 2013 x86_64 x86_64
+        x86_64 GNU/Linux"}'
+      Content-Length:
+      - '81'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 29 Jul 2013 21:34:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '548'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "id": "tok_2HyEPrXGOIMtau",
+          "livemode": false,
+          "created": 1375133693,
+          "used": false,
+          "object": "token",
+          "type": "card",
+          "card": {
+            "id": "cc_2HyEpit5sGX8jk",
+            "object": "card",
+            "last4": "0002",
+            "type": "Visa",
+            "exp_month": 6,
+            "exp_year": 2016,
+            "fingerprint": "yczg7LFe7Q2w3qfV",
+            "customer": null,
+            "country": "US",
+            "name": null,
+            "address_line1": null,
+            "address_line2": null,
+            "address_city": null,
+            "address_state": null,
+            "address_zip": null,
+            "address_country": null
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 29 Jul 2013 21:34:54 GMT
+- request:
+    method: post
+    uri: https://api.stripe.com/v1/charges
+    body:
+      encoding: US-ASCII
+      string: amount=999&currency=usd&card=tok_2HyEPrXGOIMtau
+    headers:
+      Accept:
+      - '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - Stripe/v1 RubyBindings/1.8.4
+      Authorization:
+      - Bearer sk_test_7CzlvPICOEzD17yIdCEpQ9wA
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"1.8.4","lang":"ruby","lang_version":"2.0.0 p247 (2013-06-27)","platform":"x86_64-linux","publisher":"stripe","uname":"Linux
+        dev 3.8.0-19-generic #30-Ubuntu SMP Wed May 1 16:35:23 UTC 2013 x86_64 x86_64
+        x86_64 GNU/Linux"}'
+      Content-Length:
+      - '47'
+  response:
+    status:
+      code: 402
+      message: Payment Required
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 29 Jul 2013 21:34:54 GMT
+      Content-Type:
+      - application/json;charset=utf-8
+      Content-Length:
+      - '152'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '300'
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "error": {
+            "message": "Your card was declined.",
+            "type": "card_error",
+            "code": "card_declined",
+            "charge": "ch_2HyEDzGR66Y4r9"
+          }
+        }
+    http_version: 
+  recorded_at: Mon, 29 Jul 2013 21:34:54 GMT
+recorded_with: VCR 2.5.0
